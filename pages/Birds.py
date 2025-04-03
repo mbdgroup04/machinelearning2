@@ -59,7 +59,7 @@ if user_input or uploaded_file:
         st.markdown(user_input)
         if uploaded_file:
             st.image(uploaded_file)
-    ai_response = st.write(bi.identify_bird_with_gemini(uploaded_file,user_input))
+    ai_response = bi.identify_bird_with_gemini(uploaded_file,user_input)
     st.session_state.messages.append({"role": "assistant", "content": ai_response})
     with st.chat_message("assistant"):
         st.markdown(ai_response)
