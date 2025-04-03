@@ -22,7 +22,7 @@ chat_history = []
 
 def identify_bird_with_gemini(image, user_input=None) -> str:
     try:
-        image_rgb = image.convert("RGB")
+        image_rgb = image
 
         prompt = (
             "This is an image of a bird. Please identify the species and provide:\n"
