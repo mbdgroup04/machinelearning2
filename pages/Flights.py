@@ -73,5 +73,5 @@ dest_cap=st.text_input(" ")
 st.markdown(f'<p style="font-size:20px; text-align:left; font-weight:bold; "><br></p>', unsafe_allow_html=True)
 if origin_cap and dest_cap:
     answer=get_top_flights(origin_cap,dest_cap,'a3a072bdadf1cb65bd0686e36852892a')
-    st.markdown(f"<p style='font-size:20px; text-align:left; '><b>Congrats! There is a flight from {answer[2]} to {answer[3]} on the {answer[0]} at {answer[1]}</b></p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size:30px; text-align:left; '><b>Congrats! There is a flight from {answer[2]} to {answer[3]} on the {answer[0]} at {answer[1]}</b></p>", unsafe_allow_html=True)
     
