@@ -35,6 +35,7 @@ st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">B
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:40px; font-weight:bold; ">Talk to The Birder!</p>', unsafe_allow_html=True)
 
 for message in st.session_state.messages:
