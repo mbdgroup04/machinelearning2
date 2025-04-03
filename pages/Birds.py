@@ -137,8 +137,7 @@ if user_input:
     with st.chat_message("user"):
         st.markdown(user_input)
 
-    response=get_gemini_response(user_input,bird_info)
-    answer = response.text.strip()
+    answer=get_gemini_response(user_input,bird_info)
     memory.messages.append(AIMessage(content=user_input))
     memory.messages.append(AIMessage(content=answer))
 
