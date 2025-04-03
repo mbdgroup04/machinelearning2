@@ -13,7 +13,7 @@ st.markdown(
 
 PAGES = {
     "Home": None,
-    "Birds": "pages/Birds.py",
+    "Bird Information": "pages/Birds.py",
     "Flights": "pages/Flights.py",
     "Hotels": "pages/Hotels.py",
     "Team": "pages/Team.py"
@@ -29,24 +29,43 @@ with col2:
     st.image("data/logo.png", width=200)
 
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
-st.markdown(f'<p style="font-size:35px; text-align:left; ">Welcome to <b>The Birder AI</b> -- Your Intelligent Online Ornithologist</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="font-size:35px; text-align:left; ">Welcome to <b>The Birder</b> -- Your Intelligent Online Ornithologist</p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:15px; text-align:left; ">You are now able to access the most incredible information about birds</p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
-st.markdown(f'<p style="font-size:20px; text-align:left; "><b>The Birder</b> is a cutting-edge, AI-driven market prediction platform designed to give traders a competitive edge. By leveraging advanced machine learning models and real-time financial data, we empower you with actionable insights for informed investment decisions.</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="font-size:20px; text-align:left; "><b>The Birder</b> is a cutting-edge, AI-driven bird companion that will make sure you get the best experience in the ornithology sector. The Birder will guide you through this incredible world letting you know the best curiosities of every bird, along with whre to find it and how to get there. This experience includes the best flight and hotel recommendations to make it the easiest possible for you to make your dream come true. You are one step away to achieve real happiness!</p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
-st.markdown(f'<p style="font-size:25px; text-align:left; font-weight:bold;">But why TradeVision AI?</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="font-size:25px; text-align:left; font-weight:bold;">But why The Birder?</p>', unsafe_allow_html=True)
 st.markdown("""
-- **AI-Powered Market Forecasts** – Our predictive models analyze historical trends and real-time market signals to anticipate stock movements with precision.
-- **Data-Driven Insights** – Access in-depth analytics and visualizations that decode complex financial patterns, helping you stay ahead of market trends.
-- **Live Data Integration** – Stay updated with real-time stock prices, financial indicators, and trading signals, seamlessly pulled from the SimFin API.
-- **Smart Trading Signals** – Receive clear Buy/Sell/Hold recommendations based on predictive analytics, simplifying decision-making for all traders.
-- **Cloud-Based & Accessible Anywhere** – Our sleek and interactive web app ensures seamless access from any device, anytime.
+- **Bird Information** – In this tab you will find the most interesting and precise information of any bird you want, just by uploading the image of the bird you want to know more about. You will also be able to ask any intricate question you might think of and The Birder will answer you as best as it knows.
+- **Flights** – Once you know where this particular bird is usually located, your companion will recommend the three best flight options for you to get to live the experience with your own eyes.
+- **Hotels** – The last thing you need to live the full experience is a good hotel to stay in and enjoy the best days of your life. The Birder will help you choose the best staying places you can think of to have a good rest after a long day of spotting your favourite birds.
+- **Team** – In here you can have an inside look at our incredible and hard-working team that made all this possible.
 """)
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
-st.markdown(f'<p style="font-size:25px; text-align:left;font-weight:bold;">Ready to Elevate Your Trading Game?</p>', unsafe_allow_html=True)
-st.markdown(f'<p style="font-size:25px; text-align:left; ">Sign up today and experience the future of AI-driven trading with TradeVision AI!</p>', unsafe_allow_html=True)
-website_url = "https://pythonproject-fsaanv6ra5zqqx7r2wch4a.streamlit.app/Trading_Recommendation"
-if st.button('I WANT TO PREDICT'):
+st.markdown(f'<p style="font-size:25px; text-align:left;font-weight:bold;">What are you waiting for?</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="font-size:25px; text-align:left; ">Start your experience here!</p>', unsafe_allow_html=True)
+website_url = "https://machinelearning2-j2lvfnphayyg9eqsgeapp2p.streamlit.app/Birds"
+if st.button("LET'S GO!"):
     st.markdown(f'<meta http-equiv="refresh" content="0; URL={website_url}">', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
-st.markdown(f'<p style="font-size:16px; text-align:left; ">You are now using the free version - great start!🚀 In the premium version, you will unlock multi-day forecasts, deeper financial analysis, and smarter trading strategies to stay ahead of the market!</p>', unsafe_allow_html=True)
+
+with col1:
+    st.image("data/bird1.jpeg", width=200)
+with col2:
+    st.image("data/bird2.jpeg", width=200)
+with col3:
+    st.image("data/bird3.jpeg", width=200)
+st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
+with col1:
+    st.image("data/bird4.jpeg", width=200)
+with col2:
+    st.image("data/bird5.jpeg", width=200)
+with col3:
+    st.image("data/bird6.jpeg", width=200)
+st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
+with col1:
+    st.image("data/bird7.jpeg", width=200)
+with col2:
+    st.image("data/bird8.jpeg", width=200)
+with col3:
+    st.image("data/bird9.jpeg", width=200)
