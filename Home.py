@@ -13,9 +13,7 @@ st.markdown(
 
 PAGES = {
     "Home": None,
-    "Bird Information": "pages/Birds.py",
-    "Flights": "pages/Flights.py",
-    "More Details": "pages/Wikipedia.py",
+    "The Birder AI": "pages/Birds.py",
     "Team": "pages/Team.py"
 }
 
