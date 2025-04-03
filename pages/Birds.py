@@ -98,6 +98,7 @@ def generate_prompt_and_identify(image_bytes, extra_info="N/A"):
     answer = response.text.strip()
 
     memory.messages.append(AIMessage(content=answer))
+    memory.last_bird_info = answer
 
     return answer
 
@@ -110,7 +111,10 @@ if user_input:
     memory.messages.append(HumanMessage(content=user_input))
     with st.chat_message("user"):
         st.markdown(user_input)
+    if memory.last_bird_info:
+        user_input = f"Based on this bird information:\n\n{memory.last_bird_info}\n\n{user_input}"
 
+    chat_history = [msg.content for msg in memory.messages]
     response = model.generate_content(user_input)
     answer = response.text.strip()
     memory.messages.append(AIMessage(content=answer))
