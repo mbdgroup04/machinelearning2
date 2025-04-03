@@ -5,3 +5,4 @@ scikit-learn
 datetime
 python-dotenv
 plotly
+google.generativeai
