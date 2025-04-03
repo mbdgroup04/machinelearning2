@@ -1,10 +1,7 @@
-import pandas as pd
-import requests
 import logging
 from dotenv import load_dotenv
 import os
 import google.generativeai as genai
-from PIL import Image
 from langchain.memory import ConversationBufferMemory
 from langchain.schema import HumanMessage, AIMessage
 
@@ -23,7 +20,7 @@ genai.configure(api_key=os.getenv('TMBD_API_KEY'))
 model = genai.GenerativeModel("gemini-1.5-pro")
 chat_history = []
 
-def identify_bird_with_gemini(image: Image.Image, user_input=None) -> str:
+def identify_bird_with_gemini(image, user_input=None) -> str:
     try:
         image_rgb = image.convert("RGB")
 
