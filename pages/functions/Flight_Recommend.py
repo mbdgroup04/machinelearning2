@@ -11,9 +11,8 @@ logging.info('API Key and authenticator set up correctly.')
 genai.configure(api_key=os.getenv('TMBD_API_KEY2'))
 
 genai.configure(api_key="AIzaSyD6KquAOd7uimtfMgDqkxz-v-EKDUCnUf4")
-gemini_model = genai.GenerativeModel("gemini-2.0-flash")
 
-def extract_capital_with_gemini(chat_history: list, gemini_model) -> str:
+def extract_capital_with_gemini(chat_history: list, gemini_model=genai.GenerativeModel("gemini-2.0-flash")) -> str:
     try:
         for msg in reversed(chat_history):
             if isinstance(msg, str) and "Common name" in msg and "Country" in msg:
