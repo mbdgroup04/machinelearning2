@@ -2,8 +2,9 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import pages.functions.PySimFin as psf
+import pages.functions.Bird_Identif as psf
 import datetime
+from pages.functions.Bird_Identif import identify_bird_with_gemini, chat_followup_with_gemini
 
 st.markdown(
     """
@@ -38,7 +39,7 @@ st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">B
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-st.title("Talk with The Birder!")
+st.title("Talk to The Birder!")
 
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
@@ -58,7 +59,7 @@ if user_input or uploaded_file:
         st.markdown(user_input)
         if uploaded_file:
             st.image(uploaded_file)
-    ai_response = f"Echo: {user_input}" if user_input else "Nice image! 😊"
+    ai_response = st.write(identify_bird_with_gemini(uploaded_file,user_input))
     st.session_state.messages.append({"role": "assistant", "content": ai_response})
     with st.chat_message("assistant"):
         st.markdown(ai_response)

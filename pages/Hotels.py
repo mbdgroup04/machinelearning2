@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
-import pages.functions.PySimFin as psf
+import pages.functions.Bird_Identif as psf
 from pages.functions.Exceptions import InvalidTicker
 import datetime
 import pickle
