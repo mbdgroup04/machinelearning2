@@ -109,22 +109,6 @@ for message in memory.messages:
     with st.chat_message("user" if isinstance(message, HumanMessage) else "assistant"):
         st.markdown(message.content)
 
-user_input = st.chat_input("Ask about birds or upload an image...")
-if user_input:
-    memory.messages.append(HumanMessage(content=user_input))
-    with st.chat_message("user"):
-        st.markdown(user_input)
-    if st.session_state.last_bird_info:
-        user_input = f"Based on this bird information:\n\n{st.session_state.last_bird_info}\n\n{user_input}"
-
-    chat_history = [msg.content for msg in memory.messages]
-    response = model.generate_content(user_input)
-    answer = response.text.strip()
-    memory.messages.append(AIMessage(content=answer))
-
-    with st.chat_message("assistant"):
-        st.markdown(answer)
-
 uploaded_file = st.file_uploader("Upload an image of a bird", type=["png", "jpg", "jpeg"])
 if uploaded_file:
     image = Image.open(uploaded_file)
@@ -141,6 +125,22 @@ if uploaded_file:
 
     st.write("### 🦜 Bird Identification Result:")
     st.write(bird_info)
+
+user_input = st.chat_input("Ask about birds or upload an image...")
+if user_input:
+    memory.messages.append(HumanMessage(content=user_input))
+    with st.chat_message("user"):
+        st.markdown(user_input)
+    if st.session_state.last_bird_info:
+        user_input = f"Based on this bird information:\n\n{st.session_state.last_bird_info}\n\n{user_input}"
+
+    chat_history = [msg.content for msg in memory.messages]
+    response = model.generate_content(user_input)
+    answer = response.text.strip()
+    memory.messages.append(AIMessage(content=answer))
+
+    with st.chat_message("assistant"):
+        st.markdown(answer)
 
 if st.button("🗑️ Clear Chat"):
     st.session_state.memory = BirdingMemory(return_messages=True)
