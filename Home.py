@@ -29,10 +29,10 @@ with col2:
     st.image("data/logo.jpg", width=200)
 
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
-st.markdown(f'<p style="font-size:35px; text-align:left; ">Welcome to <b>The Birders AI</b> -- Your Intelligent Online Ornithologist</p>', unsafe_allow_html=True)
-st.markdown(f'<p style="font-size:15px; text-align:left; ">You are now able to harness the power of AI for smarter trading decisions</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="font-size:35px; text-align:left; ">Welcome to <b>The Birder AI</b> -- Your Intelligent Online Ornithologist</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="font-size:15px; text-align:left; ">You are now able to access the most incredible information about birds</p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
-st.markdown(f'<p style="font-size:20px; text-align:left; "><b>TradeVision AI</b> is a cutting-edge, AI-driven market prediction platform designed to give traders a competitive edge. By leveraging advanced machine learning models and real-time financial data, we empower you with actionable insights for informed investment decisions.</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="font-size:20px; text-align:left; "><b>The Birder</b> is a cutting-edge, AI-driven market prediction platform designed to give traders a competitive edge. By leveraging advanced machine learning models and real-time financial data, we empower you with actionable insights for informed investment decisions.</p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:25px; text-align:left; font-weight:bold;">But why TradeVision AI?</p>', unsafe_allow_html=True)
 st.markdown("""
