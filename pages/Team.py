@@ -40,7 +40,8 @@ def display_team_member(name, role, bio, fun_fact, image_path):
 col1,col2,col3=st.columns(3)
 with col2:
     st.image("data/logo.png", width=200)
-st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">Our Team</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">Meet Our Team</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 
 st.markdown("Our team brings together expertise in machine learning, financial analytics, business strategy, and web development.")
 
@@ -49,8 +50,8 @@ team_members = [
         "🇩🇪 Leonardo is from Germany and brings **years of consulting and business strategy insights** to the project. 📊 His expertise in **decision-making & market analysis** helped shape the vision of our trading system.",
         "🏃‍♂️ He is currently training for the **Tokyo Marathon**! 🎌", "data/Leonardo.jpeg"),
 
-    ("Gizela Thomas", "💻 Streamlit Developer", 
-        "🇺🇸 Gizela is from the USA and has **experience in consulting** but primarily works in the **health sector**. 🏥 She was responsible for building the **Streamlit interface**, ensuring a smooth and user-friendly experience.",
+    ("Gizela Thomas", ":bird: Ornithologist", 
+        "🇺🇸 Gizela is from the USA and is **the best ornithologist in North America** but primarily works in the **health sector**, making sure that all kinds of birds stay far from extinction.",
         "📰 She has been on the **front page of Yahoo News**! 🌟", "data/gizela.jpeg"),
 
     ("Nitin Jangir", "🤖 Machine Learning Engineer", 
