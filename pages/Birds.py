@@ -38,20 +38,18 @@ with col2:
     st.image("data/logo.png", width=200)
 st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">Bird Information</p>', unsafe_allow_html=True)
 
-#load_dotenv("pages/api.env")
 genai.configure(api_key='AIzaSyAHvOilcTHe96KhrNyQ7uLiuyaU0M2kFe0')
 model = genai.GenerativeModel("gemini-1.5-pro")
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:40px; font-weight:bold; ">Talk to The Birder!</p>', unsafe_allow_html=True)
 
-# ✅ Birding memory with extra fields
 class BirdingMemory(ConversationBufferMemory):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._resolved_country = None
         self._resolved_capital = None
         self._resolved_origin_iata = None
-        self._messages = []  # Initialize _messages attribute
+        self._messages = []
 
     @property
     def messages(self):
@@ -76,13 +74,11 @@ class BirdingMemory(ConversationBufferMemory):
     @resolved_origin_iata.setter
     def resolved_origin_iata(self, value): self._resolved_origin_iata = value
 
-# Initialize memory with this updated class
 if "memory" not in st.session_state:
     st.session_state.memory = BirdingMemory(return_messages=True)
 
 memory = st.session_state.memory
 
-# ✅ Bird ID prompt template
 prompt_template = PromptTemplate.from_template("""
 This is an image of a bird. Please identify the species and provide:
 - Common name
@@ -99,7 +95,7 @@ def generate_prompt_and_identify(image_bytes, extra_info="N/A"):
     prompt = prompt_template.format(extra_info=extra_info)
     memory.messages.append(HumanMessage(content=prompt))
 
-    response = model.generate_content([prompt, {"mime_type": "image/jpeg", "data": image_bytes}])  # Send as bytes
+    response = model.generate_content([prompt, {"mime_type": "image/jpeg", "data": image_bytes}])
     answer = response.text.strip()
 
     memory.messages.append(AIMessage(content=answer))
@@ -125,18 +121,16 @@ if user_input:
 
 uploaded_file = st.file_uploader("Upload an image of a bird", type=["png", "jpg", "jpeg"])
 if uploaded_file:
-    # Convert Streamlit UploadedFile to PIL Image
     image = Image.open(uploaded_file)
 
-    # Convert PIL Image to Bytes
     image_bytes = io.BytesIO()
-    image.save(image_bytes, format=image.format)  # Preserve original format
-    image_bytes = image_bytes.getvalue()  # Get the byte content
+    image.save(image_bytes, format=image.format)
+    image_bytes = image_bytes.getvalue()
 
     st.image(image, caption="Uploaded Image", use_column_width=True)
 
     with st.spinner("Identifying the bird..."):
-        bird_info = generate_prompt_and_identify(image_bytes)  # Pass bytes instead of image object
+        bird_info = generate_prompt_and_identify(image_bytes)
 
     st.write("### 🦜 Bird Identification Result:")
     st.write(bird_info)
