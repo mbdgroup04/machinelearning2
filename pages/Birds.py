@@ -137,6 +137,7 @@ if user_input:
     chat_history = [msg.content for msg in memory.messages]
     response = model.generate_content(user_input)
     answer = response.text.strip()
+    memory.messages.append(AIMessage(content=user_input))
     memory.messages.append(AIMessage(content=answer))
 
     with st.chat_message("assistant"):
