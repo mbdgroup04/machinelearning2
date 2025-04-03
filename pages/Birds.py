@@ -76,6 +76,9 @@ class BirdingMemory(ConversationBufferMemory):
 if "memory" not in st.session_state:
     st.session_state.memory = BirdingMemory(return_messages=True)
 
+if "last_bird_info" not in st.session_state:
+    st.session_state.last_bird_info = None
+
 memory = st.session_state.memory
 
 prompt_template = PromptTemplate.from_template("""
@@ -98,7 +101,7 @@ def generate_prompt_and_identify(image_bytes, extra_info="N/A"):
     answer = response.text.strip()
 
     memory.messages.append(AIMessage(content=answer))
-    memory.last_bird_info = answer
+    st.session_state.last_bird_info = answer
 
     return answer
 
@@ -111,8 +114,8 @@ if user_input:
     memory.messages.append(HumanMessage(content=user_input))
     with st.chat_message("user"):
         st.markdown(user_input)
-    if memory.last_bird_info:
-        user_input = f"Based on this bird information:\n\n{memory.last_bird_info}\n\n{user_input}"
+    if st.session_state.last_bird_info:
+        user_input = f"Based on this bird information:\n\n{st.session_state.last_bird_info}\n\n{user_input}"
 
     chat_history = [msg.content for msg in memory.messages]
     response = model.generate_content(user_input)
@@ -141,4 +144,5 @@ if uploaded_file:
 
 if st.button("🗑️ Clear Chat"):
     st.session_state.memory = BirdingMemory(return_messages=True)
+    st.session_state.last_bird_info = None
     st.rerun()
