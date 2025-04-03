@@ -4,6 +4,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.schema import AIMessage, HumanMessage
 from langchain.prompts import PromptTemplate
 from PIL import Image
+import io
 
 st.markdown(
     """
@@ -92,11 +93,11 @@ Additional Observations:
 """)
 
 # ✅ Bird ID function
-def generate_prompt_and_identify(image, extra_info="N/A"):
+def generate_prompt_and_identify(image_bytes, extra_info="N/A"):
     prompt = prompt_template.format(extra_info=extra_info)
     memory.messages.append(HumanMessage(content=prompt))
 
-    response = model.generate_content([prompt, image])
+    response = model.generate_content([prompt, {"mime_type": "image/jpeg", "data": image_bytes}])  # Send as bytes
     answer = response.text.strip()
 
     memory.messages.append(AIMessage(content=answer))
@@ -121,16 +122,20 @@ if user_input:
     with st.chat_message("assistant"):
         st.markdown(answer)
 
-# ✅ Image Upload
 uploaded_file = st.file_uploader("Upload an image of a bird", type=["png", "jpg", "jpeg"])
 if uploaded_file:
+    # Convert Streamlit UploadedFile to PIL Image
     image = Image.open(uploaded_file)
-    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+
+    # Convert PIL Image to Bytes
+    image_bytes = io.BytesIO()
+    image.save(image_bytes, format=image.format)  # Preserve original format
+    image_bytes = image_bytes.getvalue()  # Get the byte content
+
+    st.image(image, caption="Uploaded Image", use_column_width=True)
+
     with st.spinner("Identifying the bird..."):
-        bird_info = generate_prompt_and_identify(uploaded_file)
+        bird_info = generate_prompt_and_identify(image_bytes)  # Pass bytes instead of image object
+
     st.write("### 🦜 Bird Identification Result:")
     st.write(bird_info)
-
-if st.button("Clear Chat 🗑️"):
-    st.session_state.memory = BirdingMemory(return_messages=True)
-    st.rerun()
