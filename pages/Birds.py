@@ -45,7 +45,8 @@ for message in st.session_state.messages:
 
 user_input = st.chat_input("Ask me anything...")
 uploaded_file1 = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
-uploaded_file=Image.open(uploaded_file1)
+if uploaded_file1:
+    uploaded_file=Image.open(uploaded_file1)
 
 if user_input or uploaded_file:
     user_message = {"role": "user", "content": user_input}
