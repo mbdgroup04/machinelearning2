@@ -15,7 +15,6 @@ PAGES = {
     "Home": "Home.py",
     "Bird Information": "pages/Birds.py",
     "Flights": "pages/Flights.py",
-    "Hotels": "pages/Hotels.py",
     "Team": None
 }
 
