@@ -1,11 +1,4 @@
 import streamlit as st
-import pandas as pd
-import datetime
-import pickle
-import numpy as np
-import pages.functions.Bird_Identif as psf
-from pages.functions.Exceptions import InvalidTicker
-import time
 
 st.markdown(
     """

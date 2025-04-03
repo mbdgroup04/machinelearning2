@@ -18,7 +18,7 @@ logging.basicConfig(
 load_dotenv("functions/api.env")
 logging.info('API Key and authenticator set up correctly.')
 
-genai.configure(api_key=os.getenv('TMBD_API_KEY'))
+genai.configure(api_key=os.getenv('TMBD_API_KEY2'))
 
 model = genai.GenerativeModel("gemini-1.5-pro")
 chat_history = []
