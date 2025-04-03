@@ -102,6 +102,14 @@ def generate_prompt_and_identify(image_bytes, extra_info="N/A"):
 
     return answer
 
+def get_gemini_response(input,image):
+    model = genai.GenerativeModel('gemini-1.5-flash-latest')
+    if input!="":
+       response = model.generate_content([input,image])
+    else:
+       response = model.generate_content(image)
+    return response.text
+
 for message in memory.messages:
     with st.chat_message("user" if isinstance(message, HumanMessage) else "assistant"):
         st.markdown(message.content)
@@ -125,18 +133,12 @@ if uploaded_file:
 
 user_input = st.chat_input("Ask about birds or upload an image...")
 if user_input:
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", max_retries=3, temperature=0.7)
-    conversation = ConversationChain(llm=llm, verbose=True, memory=ConversationBufferMemory())
-
-    conversation.predict(input=user_input)
     memory.messages.append(HumanMessage(content=user_input))
     with st.chat_message("user"):
         st.markdown(user_input)
-    if st.session_state.last_bird_info:
-        user_input = f"Based on the name of this bird:\n\n{st.session_state.last_bird_info},\n\ntell me this:{user_input}"
 
-    chat_history = [msg.content for msg in memory.messages]
-    answer = conversation.text.strip()
+    response=get_gemini_response(user_input,uploaded_file)
+    answer = response.text.strip()
     memory.messages.append(AIMessage(content=user_input))
     memory.messages.append(AIMessage(content=answer))
 
