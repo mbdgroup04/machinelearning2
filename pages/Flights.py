@@ -62,5 +62,5 @@ origin_cap = st.text_input("")
 st.markdown(f"<p style='font-size:20px; text-align:left; '>Please insert the iata of the city you want to fly to:</p>", unsafe_allow_html=True)
 dest_cap=st.text_input(" ")
 
-if orig_iata and dest_iata:
-    st.write(get_top_flights(orig_iata,dest_iata,'a3a072bdadf1cb65bd0686e36852892a'))
+if origin_cap and dest_cap:
+    st.write(get_top_flights(origin_cap,dest_cap,'a3a072bdadf1cb65bd0686e36852892a'))
