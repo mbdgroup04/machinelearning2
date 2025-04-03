@@ -130,6 +130,7 @@ if uploaded_file:
 
     with st.spinner("Identifying the bird..."):
         bird_info = generate_prompt_and_identify(image_bytes)
+        memory.messages.append(AIMessage(content=bird_info))
 
     st.write("### 🦜 Bird Identification Result:")
     st.write(bird_info)
