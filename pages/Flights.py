@@ -1,6 +1,6 @@
 import streamlit as st
 import pages.functions.Flight_Recommend as flrec
-import Birds as bdid
+import pages.Birds as bdid
 
 st.markdown(
     """
