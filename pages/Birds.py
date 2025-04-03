@@ -125,7 +125,7 @@ if uploaded_file:
 
 user_input = st.chat_input("Ask about birds or upload an image...")
 if user_input:
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", max_retries=3, temperature=0.7)
     conversation = ConversationChain(llm=llm, verbose=True, memory=ConversationBufferMemory())
 
     conversation.predict(input=user_input)
