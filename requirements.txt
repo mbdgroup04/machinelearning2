@@ -6,3 +6,4 @@ datetime
 python-dotenv
 plotly
 google.generativeai
+langchain
