@@ -56,7 +56,7 @@ if uploaded_file1:
         if user_input:
             with st.chat_message("user"):
                 st.markdown(user_input)
-        ai_response = bi.identify_bird_with_gemini(uploaded_file,user_input)
+        ai_response = bi.generate_prompt_and_identify(uploaded_file)
         with st.chat_message("assistant"):
             st.markdown(ai_response)
 
