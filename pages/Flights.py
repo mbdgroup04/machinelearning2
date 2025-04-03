@@ -42,16 +42,22 @@ def resolve_origin_to_iata(user_input, gemini_model):
     return None
 def get_top_flights(origin: str, destination: str, access_key: str):
     params = {'access_key': access_key, 'limit': 10}
-    response = requests.get('http://api.aviationstack.com/v1/flights',params=params)
+    response = requests.get('http://api.aviationstack.com/v1/flights', params=params)
+
     if response.status_code != 200:
         return f'Sorry, there was an error: {response.status_code}'
-    flights = response.json()
-    a=0
-    for i in flights['data']:
-        if i[0]['departure']['iata']==origin and i[0]['arrival']['iata']==destination:
-            a=1
-    if a==1:
-        return f'You have a flight from {origin} to {destination} on the {datetime.datetime.fromisoformat(flights[flights['data'][0]['departure']['iata']==origin]['data'][0]['departure']['scheduled']).date()} at {datetime.datetime.fromisoformat(flights[flights['data'][0]['departure']['iata']==origin]['data'][0]['departure']['scheduled']).time()}'
+
+    flights = response.json()  # ✅ Convert JSON response to Python dict
+
+    for flight in flights['data']:  # ✅ Iterate through the list properly
+        if flight['departure']['iata'] == origin and flight['arrival']['iata'] == destination:
+            departure_time = datetime.datetime.fromisoformat(flight['departure']['scheduled'][:-6])  # ✅ Remove timezone
+            flight_date = departure_time.date()
+            flight_time = departure_time.time()
+
+            return f'You have a flight from {origin} to {destination} on {flight_date} at {flight_time}.'
+
+    return "No matching flights found."
 
 st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">Flight Booking</p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:20px; text-align:left; font-weight:bold; "><br></p>', unsafe_allow_html=True)
