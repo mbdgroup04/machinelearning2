@@ -60,7 +60,7 @@ origin_cap = st.text_input("")
 orig_iata=resolve_origin_to_iata(origin_cap,genai.GenerativeModel("gemini-1.5-pro"))
 st.markdown(f"<p style='font-size:20px; text-align:left; '>Please insert your city you want to fly to:</p>", unsafe_allow_html=True)
 dest_cap=st.text_input(" ")
-dest_iata=resolve_origin_to_iata(origin_cap,genai.GenerativeModel("gemini-1.5-pro"))
+dest_iata=resolve_origin_to_iata(dest_cap,genai.GenerativeModel("gemini-1.5-pro"))
 
 if orig_iata and dest_iata:
     st.write(get_top_flights(orig_iata,dest_iata,'a3a072bdadf1cb65bd0686e36852892a'))
