@@ -36,7 +36,7 @@ with col2:
     st.image("data/logo.png", width=200)
 st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">Bird Information</p>', unsafe_allow_html=True)
 
-genai.configure(api_key='AIzaSyD6KquAOd7uimtfMgDqkxz-v-EKDUCnUf4')
+genai.configure(api_key='AIzaSyCgR4UCNFZZBcQl5PA_7C7IhLxdqXnFrH4')
 model = genai.GenerativeModel("gemini-1.5-pro")
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:40px; font-weight:bold; ">Talk to The Birder!</p>', unsafe_allow_html=True)
