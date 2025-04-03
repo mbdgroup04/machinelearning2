@@ -1,4 +1,7 @@
 import streamlit as st
+from langchain_community.utilities import WikipediaAPIWrapper
+from langchain.tools import WikipediaQueryRun
+
 st.markdown(
     """
     <style>
@@ -14,7 +17,7 @@ PAGES = {
     "Home": "Home.py",
     "Bird Information": "pages/Birds.py",
     "Flights": "pages/Flights.py",
-    "Hotels": None,
+    "More Details": None,
     "Team": "pages/Team.py"
 }
 
@@ -29,5 +32,8 @@ with col2:
     st.image("data/logo.png", width=200)
 st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">Hotel Booking</p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:20px; text-align:left; font-weight:bold; "><br></p>', unsafe_allow_html=True)
-st.markdown(f"<p style='font-size:20px; text-align:left; '>The Birder also wants to make sure that you have the best experience when it comes to living your dream and your best life. That's the reason why The Birder suggests you these different hotels where you can start the day with energy and finish it with the best rest, as well as enjoy the best food in the area!</p>", unsafe_allow_html=True)
-st.markdown(f'<p style="font-size:20px; text-align:left; font-weight:bold; "><br></p>', unsafe_allow_html=True)
+
+wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
+st.markdown(f"<p style='font-size:20px; text-align:left; '>Please insert the name of the bird you want to know more about:</p>", unsafe_allow_html=True)
+bird=st.text_input("  ")
+st.write(wikipedia.run(bird))

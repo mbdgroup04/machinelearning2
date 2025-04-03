@@ -19,6 +19,7 @@ PAGES = {
     "Home": "Home.py",
     "Bird Information": "pages/Birds.py",
     "Flights": None,
+    "More Details": "pages/Wikipedia.py",
     "Team": "pages/Team.py"
 }
 
@@ -46,20 +47,16 @@ def get_top_flights(origin: str, destination: str, access_key: str):
 
     if response.status_code != 200:
         return f'Sorry, there was an error: {response.status_code}'
-
-    flights = response.json()  # ✅ Convert JSON response to Python dict
-
-    for flight in flights['data']:  # ✅ Iterate through the list properly
+    flights = response.json()
+    for flight in flights['data']:
         if flight['departure']['iata'] == origin and flight['arrival']['iata'] == destination:
-            departure_time = datetime.datetime.fromisoformat(flight['departure']['scheduled'][:-6])  # ✅ Remove timezone
+            departure_time = datetime.datetime.fromisoformat(flight['departure']['scheduled'][:-6])
             flight_date = departure_time.date()
             flight_time = departure_time.time()
             departing_airport= flight['departure']['airport']
             arriving_airport=flight['arrival']['airport']
             flight_list=[flight_date,flight_time,departing_airport,arriving_airport]
-
             return flight_list
-
     return "No matching flights found."
 
 st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">Flight Booking</p>', unsafe_allow_html=True)
@@ -73,5 +70,5 @@ dest_cap=st.text_input(" ")
 st.markdown(f'<p style="font-size:20px; text-align:left; font-weight:bold; "><br></p>', unsafe_allow_html=True)
 if origin_cap and dest_cap:
     answer=get_top_flights(origin_cap,dest_cap,'a3a072bdadf1cb65bd0686e36852892a')
-    st.markdown(f"<p style='font-size:30px; text-align:left; '><b>Congrats! There is a flight from {answer[2]} to {answer[3]} on the {answer[0]} at {answer[1]}</b></p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size:30px; text-align:left; '><b>Congrats! There is a flight from {answer[2]} to {answer[3]} on the {answer[0]} at {answer[1]}. Make sure you don't miss it!</b></p>", unsafe_allow_html=True)
     
