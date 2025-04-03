@@ -50,22 +50,22 @@ if st.button("LET'S GO!"):
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 
 with col1:
-    st.image("data/bird1.jpeg", width=200)
+    st.image("data/bird1.jpg", width=200)
 with col2:
-    st.image("data/bird2.jpeg", width=200)
+    st.image("data/bird2.jpg", width=200)
 with col3:
-    st.image("data/bird3.jpeg", width=200)
+    st.image("data/bird3.jpg", width=200)
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 with col1:
-    st.image("data/bird4.jpeg", width=200)
+    st.image("data/bird4.jpg", width=200)
 with col2:
-    st.image("data/bird5.jpeg", width=200)
+    st.image("data/bird5.jpg", width=200)
 with col3:
-    st.image("data/bird6.jpeg", width=200)
+    st.image("data/bird6.jpg", width=200)
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 with col1:
-    st.image("data/bird7.jpeg", width=200)
+    st.image("data/bird7.jpg", width=200)
 with col2:
-    st.image("data/bird8.jpeg", width=200)
+    st.image("data/bird8.jpg", width=200)
 with col3:
-    st.image("data/bird9.jpeg", width=200)
+    st.image("data/bird9.jpg", width=200)
