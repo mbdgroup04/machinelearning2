@@ -86,6 +86,7 @@ This is an image of a bird. Please identify the species and provide:
 - Scientific name
 - Conservation status
 - Country where it's most commonly found
+- Capital city of this country
 - A short description including habitat, diet, and one fun fact
 
 Additional Observations:
