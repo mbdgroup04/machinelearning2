@@ -6,6 +6,7 @@ from langchain.prompts import PromptTemplate
 from PIL import Image
 import io
 from langchain.chains import ConversationChain
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 st.markdown(
     """
@@ -124,7 +125,8 @@ if uploaded_file:
 
 user_input = st.chat_input("Ask about birds or upload an image...")
 if user_input:
-    conversation = ConversationChain(llm=model, verbose=True, memory=ConversationBufferMemory())
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
+    conversation = ConversationChain(llm=llm, verbose=True, memory=ConversationBufferMemory())
 
     conversation.predict(input=user_input)
     memory.messages.append(HumanMessage(content=user_input))
