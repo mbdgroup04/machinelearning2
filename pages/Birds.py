@@ -62,3 +62,7 @@ if user_input or uploaded_file:
     st.session_state.messages.append({"role": "assistant", "content": ai_response})
     with st.chat_message("assistant"):
         st.markdown(ai_response)
+
+if st.button("Clear Chat 🗑️"):
+    st.session_state.messages = []
+    st.rerun()
