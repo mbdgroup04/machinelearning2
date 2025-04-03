@@ -39,8 +39,6 @@ def resolve_origin_to_iata(user_input, gemini_model):
     if len(iata) == 3:
         return iata
     return None
-
-orig_iata=resolve_origin_to_iata(origin_cap,genai.GenerativeModel("gemini-1.5-pro"))
 def get_top_flights(origin: str, destination: str, access_key: str):
     params = {'access_key': access_key, 'dep_iata': origin, 'arr_iata': destination, 'limit': 10}
     response = requests.get('http://api.aviationstack.com/v1/flights', params=params)
@@ -59,6 +57,7 @@ st.markdown(f"<p style='font-size:20px; text-align:left; '>Get ready to be withi
 st.markdown(f'<p style="font-size:20px; text-align:left; font-weight:bold; "><br></p>', unsafe_allow_html=True)
 st.markdown(f"<p style='font-size:20px; text-align:left; '>Please insert your city you want to fly from:</p>", unsafe_allow_html=True)
 origin_cap = st.text_input("")
+orig_iata=resolve_origin_to_iata(origin_cap,genai.GenerativeModel("gemini-1.5-pro"))
 st.markdown(f'<p style="font-size:20px; text-align:left; font-weight:bold; "><br></p>', unsafe_allow_html=True)
 st.markdown(f"<p style='font-size:20px; text-align:left; '>Please insert the continent your bird lives in:</p>", unsafe_allow_html=True)
 continent_chosen = st.selectbox("", ['Choose a continent','Africa','Americas','Antartica','Asia','Europe','Oceania'])
