@@ -38,7 +38,7 @@ with col2:
     st.image("data/logo.png", width=200)
 st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">Bird Information</p>', unsafe_allow_html=True)
 
-load_dotenv("pages/functions/api.env")
+load_dotenv("api.env")
 genai.configure(api_key=os.getenv('TMBD_API_KEY3'))
 model = genai.GenerativeModel("gemini-1.5-pro")
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
