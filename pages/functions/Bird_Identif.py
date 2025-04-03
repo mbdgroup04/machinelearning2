@@ -43,6 +43,7 @@ def identify_bird_with_gemini(image, user_input=None) -> str:
                 prompt += "\nAdditional observations: " + ", ".join(extras)
 
         chat_history.append(prompt)
+        chat_history.append(image_rgb)
 
         response = model.generate_content(chat_history)
         reply = response.text.strip()
