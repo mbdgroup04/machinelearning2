@@ -5,6 +5,7 @@ from langchain.schema import AIMessage, HumanMessage
 from langchain.prompts import PromptTemplate
 from PIL import Image
 import io
+from langchain.chains import ConversationChain
 
 st.markdown(
     """
@@ -126,6 +127,9 @@ if uploaded_file:
 
 user_input = st.chat_input("Ask about birds or upload an image...")
 if user_input:
+    conversation = ConversationChain(llm=llm, verbose=True, memory=ConversationBufferMemory())
+
+    conversation.predict(input=user_input)
     memory.messages.append(HumanMessage(content=user_input))
     with st.chat_message("user"):
         st.markdown(user_input)
@@ -134,7 +138,7 @@ if user_input:
 
     chat_history = [msg.content for msg in memory.messages]
     response = model.generate_content(user_input)
-    answer = response.text.strip()
+    answer = conversation.text.strip()
     memory.messages.append(AIMessage(content=user_input))
     memory.messages.append(AIMessage(content=answer))
 
