@@ -36,10 +36,8 @@ st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">B
 
 genai.configure(api_key="AIzaSyAHvOilcTHe96KhrNyQ7uLiuyaU0M2kFe0")  # Replace with your API key
 model = genai.GenerativeModel("gemini-1.5-pro")
-
-# ✅ Streamlit UI
-st.title("🐦 Birding AI Chatbot with Flight Info ✈️")
-st.subheader("Chat with AI and identify birds from images!")
+st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
+st.markdown(f'<p style="font-size:40px; font-weight:bold; ">Talk to The Birder!</p>', unsafe_allow_html=True)
 
 # ✅ Birding memory with extra fields
 class BirdingMemory(ConversationBufferMemory):
