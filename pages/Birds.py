@@ -30,7 +30,7 @@ for page_name, file_path in PAGES.items():
 col1,col2,col3=st.columns(3)
 with col2:
     st.image("data/logo.png", width=200)
-    st.title('Bird Information')
+st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">Bird Information</p>', unsafe_allow_html=True)
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
