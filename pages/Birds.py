@@ -131,7 +131,7 @@ if uploaded_file:
     st.write("### 🦜 Bird Identification Result:")
     st.write(bird_info)
 
-user_input = st.chat_input("Ask about birds or upload an image...")
+user_input = st.chat_input("Ask about birds or upload an image...",key=input)
 if user_input:
     memory.messages.append(HumanMessage(content=user_input))
     with st.chat_message("user"):
