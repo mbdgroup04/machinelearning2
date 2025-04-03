@@ -7,3 +7,4 @@ python-dotenv
 plotly
 google.generativeai
 langchain
+langchain_community
