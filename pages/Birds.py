@@ -102,12 +102,12 @@ def generate_prompt_and_identify(image_bytes, extra_info="N/A"):
 
     return answer
 
-def get_gemini_response(input,image):
+def get_gemini_response(input1,input2):
     model = genai.GenerativeModel('gemini-1.5-flash-latest')
     if input!="":
-       response = model.generate_content([input,image])
+       response = model.generate_content([input1,input2])
     else:
-       response = model.generate_content(image)
+       response = model.generate_content(input2)
     return response.text
 
 for message in memory.messages:
@@ -137,7 +137,7 @@ if user_input:
     with st.chat_message("user"):
         st.markdown(user_input)
 
-    response=get_gemini_response(user_input,image_bytes)
+    response=get_gemini_response(user_input,bird_info)
     answer = response.text.strip()
     memory.messages.append(AIMessage(content=user_input))
     memory.messages.append(AIMessage(content=answer))
