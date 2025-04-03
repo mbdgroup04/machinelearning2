@@ -30,7 +30,7 @@ for page_name, file_path in PAGES.items():
 col1,col2,col3=st.columns(3)
 with col2:
     st.image("data/logo.png", width=200)
-st.title('Bird Information')
+    st.title('Bird Information')
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
