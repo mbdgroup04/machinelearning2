@@ -47,8 +47,8 @@ def get_top_flights(origin: str, destination: str, access_key: str):
         return f'Sorry, there was an error: {response.status_code}'
     flights = response.json()
     a=0
-    for i in flights:
-        if i['data'][0]['departure']['iata']==origin and i['data'][0]['arrival']['iata']==destination:
+    for i in flights['data']:
+        if i[0]['departure']['iata']==origin and i[0]['arrival']['iata']==destination:
             a=1
     if a==1:
         return f'You have a flight from {origin} to {destination} on the {datetime.datetime.fromisoformat(flights[flights['data'][0]['departure']['iata']==origin]['data'][0]['departure']['scheduled']).date()} at {datetime.datetime.fromisoformat(flights[flights['data'][0]['departure']['iata']==origin]['data'][0]['departure']['scheduled']).time()}'
