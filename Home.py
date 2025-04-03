@@ -51,14 +51,14 @@ st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_all
 
 cola,colb,colc=st.columns(3)
 with cola:
-    st.image("data/bird5.jpg", width=200)
-    st.image("data/bird4.jpg", width=200)
-    st.image("data/bird7.jpg", width=200)
+    st.image("data/bird5.jpg", width=205)
+    st.image("data/bird4.jpg", width=205)
+    st.image("data/bird7.jpg", width=205)
 with colb:
-    st.image("data/bird2.jpg", width=200)
-    st.image("data/bird1.jpg", width=200)
-    st.image("data/bird8.jpg", width=200)
+    st.image("data/bird2.jpg", width=205)
+    st.image("data/bird1.jpg", width=205)
+    st.image("data/bird8.jpg", width=205)
 with colc:
-    st.image("data/bird3.jpg", width=200)
-    st.image("data/bird6.jpg", width=200)
-    st.image("data/bird9.jpg", width=200)
+    st.image("data/bird3.jpg", width=205)
+    st.image("data/bird6.jpg", width=205)
+    st.image("data/bird9.jpg", width=205)
