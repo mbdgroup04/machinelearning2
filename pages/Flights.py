@@ -20,10 +20,10 @@ st.markdown(
 
 PAGES = {
     "Home": "Home.py",
-    "Company Information": "pages/Company_Information.py",
-    "Trading Recommendation": "pages/Trading_Recommendation.py",
-    "Personal Strategy": None,
-    "Our Team": "pages/Our_Team.py"
+    "Bird Information": "pages/Birds.py",
+    "Flights": None,
+    "Hotels": "pages/Hotels.py",
+    "Team": "pages/Team.py"
 }
 
 for page_name, file_path in PAGES.items():
