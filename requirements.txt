@@ -9,3 +9,4 @@ google.generativeai
 langchain
 langchain_community
 wikipedia
+langchain_google_genai
