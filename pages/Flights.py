@@ -41,11 +41,11 @@ def resolve_origin_to_iata(user_input, gemini_model):
     return None
 def get_top_flights(origin: str, destination: str, access_key: str):
     params = {'access_key': access_key, 'dep_iata': origin, 'arr_iata': destination, 'limit': 10}
-    response = requests.get('http://api.aviationstack.com/v1/flights', params=params)
+    response = requests.get('http://api.aviationstack.com/v1/flights')
     if response.status_code != 200:
         return []
     flights = response.json().get('data', [])
-    scheduled = [f for f in flights if f.get("flight_status") == "scheduled"][:3]
+    scheduled = [f for f in flights if f.get("flight_status") == "scheduled" and (f.get("iata")==origin or f.get("iata")==destination)][:3]
     return [
         f"{f['airline']['name']} {f['flight']['iata']} → {f['departure']['airport']} to {f['arrival']['airport']} (Status: {f['flight_status']})"
         for f in scheduled
