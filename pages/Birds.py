@@ -35,7 +35,7 @@ with col2:
     st.image("data/logo.png", width=200)
 st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">Bird Information</p>', unsafe_allow_html=True)
 
-genai.configure(api_key='AIzaSyAHvOilcTHe96KhrNyQ7uLiuyaU0M2kFe0')
+genai.configure(api_key='AIzaSyB8d_iqITIz73u1d_cDrD_lQ3T0rs8Ez1w')
 model = genai.GenerativeModel("gemini-1.5-pro")
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:40px; font-weight:bold; ">Talk to The Birder!</p>', unsafe_allow_html=True)
@@ -87,9 +87,6 @@ This is an image of a bird. Please identify the species and provide:
 - Country where it's most commonly found
 - Capital city of this country
 - A short description including habitat, diet, and one fun fact
-
-Additional Observations:
-{extra_info}
 """)
 
 def generate_prompt_and_identify(image_bytes, extra_info="N/A"):
