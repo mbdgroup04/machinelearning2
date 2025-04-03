@@ -132,5 +132,5 @@ if uploaded_file:
     st.write(bird_info)
 
 if st.button("Clear Chat 🗑️"):
-    st.session_state.messages = []
+    response=''
     st.rerun()
