@@ -43,7 +43,7 @@ def get_top_flights(origin: str, destination: str, access_key: str):
     params = {'access_key': access_key, 'limit': 10}
     response = requests.get('http://api.aviationstack.com/v1/flights',params=params)
     if response.status_code != 200:
-        return []
+        return f'Sorry, there was an error: {response.status_code}'
     flights = response.json().get('data', [])
     scheduled = [f for f in flights if f.get("flight_status") == "scheduled" and (f.get("iata")==origin or f.get("iata")==destination)][:3]
     return [
