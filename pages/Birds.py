@@ -127,7 +127,7 @@ if uploaded_file:
 
 user_input = st.chat_input("Ask about birds or upload an image...")
 if user_input:
-    conversation = ConversationChain(llm=llm, verbose=True, memory=ConversationBufferMemory())
+    conversation = ConversationChain(llm=model, verbose=True, memory=ConversationBufferMemory())
 
     conversation.predict(input=user_input)
     memory.messages.append(HumanMessage(content=user_input))
@@ -137,7 +137,6 @@ if user_input:
         user_input = f"Based on the name of this bird:\n\n{st.session_state.last_bird_info},\n\ntell me this:{user_input}"
 
     chat_history = [msg.content for msg in memory.messages]
-    response = model.generate_content(user_input)
     answer = conversation.text.strip()
     memory.messages.append(AIMessage(content=user_input))
     memory.messages.append(AIMessage(content=answer))
