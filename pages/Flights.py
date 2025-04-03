@@ -63,4 +63,4 @@ dest_cap=st.text_input(" ")
 dest_iata=resolve_origin_to_iata(origin_cap,genai.GenerativeModel("gemini-1.5-pro"))
 
 if orig_iata and dest_iata:
-    st.write(get_top_flights(orig_iata,dest_iata,'c2c537704d71bf30481a2fcc25334b35'))
+    st.write(get_top_flights(orig_iata,dest_iata,os.getenv("AVIATIONSTACK_API_KEY")))
