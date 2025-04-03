@@ -54,8 +54,11 @@ def get_top_flights(origin: str, destination: str, access_key: str):
             departure_time = datetime.datetime.fromisoformat(flight['departure']['scheduled'][:-6])  # ✅ Remove timezone
             flight_date = departure_time.date()
             flight_time = departure_time.time()
+            departing_airport= flight['departure']['airport']
+            arriving_airport=flight['arrival']['airport']
+            flight_list=[flight_date,flight_time,departing_airport,arriving_airport]
 
-            return f'You have a flight from {origin} to {destination} on {flight_date} at {flight_time}.'
+            return flight_list
 
     return "No matching flights found."
 
@@ -69,4 +72,6 @@ st.markdown(f"<p style='font-size:20px; text-align:left; '>Please insert the iat
 dest_cap=st.text_input(" ")
 
 if origin_cap and dest_cap:
-    st.write(get_top_flights(origin_cap,dest_cap,'a3a072bdadf1cb65bd0686e36852892a'))
+    answer=get_top_flights(origin_cap,dest_cap,'a3a072bdadf1cb65bd0686e36852892a')
+    st.markdown(f"<p style='font-size:20px; text-align:left; '>Congrats! There is a flight from {answer[2]} to {answer[3]} on the {answer[0]} at {answer[1]}</p>", unsafe_allow_html=True)
+    
