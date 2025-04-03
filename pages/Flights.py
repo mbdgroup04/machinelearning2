@@ -38,8 +38,8 @@ st.markdown(f'<p style="font-size:20px; text-align:left; font-weight:bold; "><br
 st.markdown(f"<p style='font-size:20px; text-align:left; '>Get ready to be within eyesight of your favorite birds in the world, here are some flight suggestions to fly to {capital_given} so you can be as near as possible to the place where your favorite birds live and take the best pictures so you can always remember the experience you lived!</p>", unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:20px; text-align:left; font-weight:bold; "><br></p>', unsafe_allow_html=True)
 st.markdown(f"<p style='font-size:20px; text-align:left; '>Please insert the continent your bird lives in:</p>", unsafe_allow_html=True)
-st.markdown(f'<p style="font-size:20px; text-align:left; font-weight:bold; "><br></p>', unsafe_allow_html=True)
 continent_chosen = st.selectbox("", ['Choose a continent','Africa','Americas','Antartica','Asia','Europe','Oceania'])
+st.markdown(f'<p style="font-size:20px; text-align:left; font-weight:bold; "><br></p>', unsafe_allow_html=True)
 if continent_chosen!='Choose a continent':
     st.markdown(f"<p style='font-size:20px; text-align:left; '>Please insert the capital of the country your bird lives in:</p>", unsafe_allow_html=True)
     if continent_chosen=='Africa':
