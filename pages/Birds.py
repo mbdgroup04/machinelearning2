@@ -4,7 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pages.functions.Bird_Identif as psf
 import datetime
-from pages.functions.Bird_Identif import identify_bird_with_gemini, chat_followup_with_gemini
+import pages.functions.Bird_Identif as bi
 
 st.markdown(
     """
@@ -59,7 +59,7 @@ if user_input or uploaded_file:
         st.markdown(user_input)
         if uploaded_file:
             st.image(uploaded_file)
-    ai_response = st.write(identify_bird_with_gemini(uploaded_file,user_input))
+    ai_response = st.write(bi.identify_bird_with_gemini(uploaded_file,user_input))
     st.session_state.messages.append({"role": "assistant", "content": ai_response})
     with st.chat_message("assistant"):
         st.markdown(ai_response)
