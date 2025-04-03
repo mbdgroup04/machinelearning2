@@ -70,6 +70,3 @@ def chat_followup_with_gemini(user_query: str) -> str:
     except Exception as e:
         print("Error in chat_followup_with_gemini:", e)
         return "Failed to get a follow-up response."
-    
-def get_chat_history():
-    return chat_history

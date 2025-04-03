@@ -60,6 +60,9 @@ if uploaded_file1:
         with st.chat_message("assistant"):
             st.markdown(ai_response)
 
+def get_chat_history():
+    return ai_response
+
 if st.button("Clear Chat 🗑️"):
     st.session_state.messages = []
     st.rerun()
