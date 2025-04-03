@@ -26,7 +26,7 @@ for page_name, file_path in PAGES.items():
         st.sidebar.write(f"### {page_name}")
 col1,col2,col3=st.columns(3)
 with col2:
-    st.image("data/logo.jpg", width=200)
+    st.image("data/logo.png", width=200)
 
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:35px; text-align:left; ">Welcome to <b>The Birder AI</b> -- Your Intelligent Online Ornithologist</p>', unsafe_allow_html=True)
