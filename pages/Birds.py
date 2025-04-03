@@ -132,5 +132,5 @@ if uploaded_file:
     st.write(bird_info)
 
 if st.button("Clear Chat 🗑️"):
-    answer=''
+    st.session_state.memory = BirdingMemory(return_messages=True)
     st.rerun()
