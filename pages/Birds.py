@@ -54,7 +54,6 @@ if user_input or uploaded_file:
     user_message = {"role": "user", "content": user_input}
     if uploaded_file:
         user_message["image"] = uploaded_file
-    st.session_state.messages.append(user_message)
     with st.chat_message("user"):
         st.markdown(user_input)
         if uploaded_file:
