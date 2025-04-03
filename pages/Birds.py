@@ -5,8 +5,6 @@ from langchain.schema import AIMessage, HumanMessage
 from langchain.prompts import PromptTemplate
 from PIL import Image
 import io
-from dotenv import load_dotenv
-import os
 
 st.markdown(
     """
@@ -38,19 +36,19 @@ with col2:
     st.image("data/logo.png", width=200)
 st.markdown(f'<p style="font-size:40px; text-align:center; font-weight:bold; ">Bird Information</p>', unsafe_allow_html=True)
 
-load_dotenv("functions/api.env")
-genai.configure(api_key=os.getenv('TMBD_API_KEY3'))
+genai.configure(api_key="AIzaSyAHvOilcTHe96KhrNyQ7uLiuyaU0M2kFe0")  # Replace with your API key
 model = genai.GenerativeModel("gemini-1.5-pro")
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:40px; font-weight:bold; ">Talk to The Birder!</p>', unsafe_allow_html=True)
 
+# ✅ Birding memory with extra fields
 class BirdingMemory(ConversationBufferMemory):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._resolved_country = None
         self._resolved_capital = None
         self._resolved_origin_iata = None
-        self._messages = []
+        self._messages = []  # Initialize _messages attribute
 
     @property
     def messages(self):
@@ -75,11 +73,13 @@ class BirdingMemory(ConversationBufferMemory):
     @resolved_origin_iata.setter
     def resolved_origin_iata(self, value): self._resolved_origin_iata = value
 
+# Initialize memory with this updated class
 if "memory" not in st.session_state:
     st.session_state.memory = BirdingMemory(return_messages=True)
 
 memory = st.session_state.memory
 
+# ✅ Bird ID prompt template
 prompt_template = PromptTemplate.from_template("""
 This is an image of a bird. Please identify the species and provide:
 - Common name
@@ -108,36 +108,32 @@ for message in memory.messages:
         st.markdown(message.content)
 
 user_input = st.chat_input("Ask about birds or upload an image...")
-
 if user_input:
     memory.messages.append(HumanMessage(content=user_input))
-
     with st.chat_message("user"):
         st.markdown(user_input)
 
-    chat_history = [msg.content for msg in memory.messages]
-
-    response = model.generate_content(chat_history + [user_input])
+    response = model.generate_content(user_input)
     answer = response.text.strip()
-
     memory.messages.append(AIMessage(content=answer))
 
     with st.chat_message("assistant"):
         st.markdown(answer)
 
-
 uploaded_file = st.file_uploader("Upload an image of a bird", type=["png", "jpg", "jpeg"])
 if uploaded_file:
+    # Convert Streamlit UploadedFile to PIL Image
     image = Image.open(uploaded_file)
 
+    # Convert PIL Image to Bytes
     image_bytes = io.BytesIO()
-    image.save(image_bytes, format=image.format)
-    image_bytes = image_bytes.getvalue()
+    image.save(image_bytes, format=image.format)  # Preserve original format
+    image_bytes = image_bytes.getvalue()  # Get the byte content
 
     st.image(image, caption="Uploaded Image", use_column_width=True)
 
     with st.spinner("Identifying the bird..."):
-        bird_info = generate_prompt_and_identify(image_bytes)
+        bird_info = generate_prompt_and_identify(image_bytes)  # Pass bytes instead of image object
 
     st.write("### 🦜 Bird Identification Result:")
     st.write(bird_info)
