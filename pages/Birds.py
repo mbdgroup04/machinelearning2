@@ -48,16 +48,16 @@ uploaded_file1 = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"]
 if uploaded_file1:
     uploaded_file=Image.open(uploaded_file1)
 
-if user_input or uploaded_file:
-    user_message = {"role": "user", "content": user_input}
-    if uploaded_file:
-        user_message["image"] = uploaded_file
-    if user_input:
-        with st.chat_message("user"):
-            st.markdown(user_input)
-    ai_response = bi.identify_bird_with_gemini(uploaded_file,user_input)
-    with st.chat_message("assistant"):
-        st.markdown(ai_response)
+    if user_input or uploaded_file:
+        user_message = {"role": "user", "content": user_input}
+        if uploaded_file:
+            user_message["image"] = uploaded_file
+        if user_input:
+            with st.chat_message("user"):
+                st.markdown(user_input)
+        ai_response = bi.identify_bird_with_gemini(uploaded_file,user_input)
+        with st.chat_message("assistant"):
+            st.markdown(ai_response)
 
 if st.button("Clear Chat 🗑️"):
     st.session_state.messages = []
