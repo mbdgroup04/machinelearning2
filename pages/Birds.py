@@ -1,9 +1,4 @@
 import streamlit as st
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
-import pages.functions.Bird_Identif as psf
-import datetime
 import pages.functions.Bird_Identif as bi
 from PIL import Image
 
@@ -49,7 +44,8 @@ for message in st.session_state.messages:
             st.image(message["image"])
 
 user_input = st.chat_input("Ask me anything...")
-uploaded_file = Image.open(st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"]))
+uploaded_file1 = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
+uploaded_file=Image.open(uploaded_file1)
 
 if user_input or uploaded_file:
     user_message = {"role": "user", "content": user_input}
