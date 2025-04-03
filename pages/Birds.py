@@ -3,6 +3,7 @@ import google.generativeai as genai
 from langchain.memory import ConversationBufferMemory
 from langchain.schema import AIMessage, HumanMessage
 from langchain.prompts import PromptTemplate
+from PIL import Image
 
 st.markdown(
     """
@@ -123,6 +124,7 @@ if user_input:
 # ✅ Image Upload
 uploaded_file = st.file_uploader("Upload an image of a bird", type=["png", "jpg", "jpeg"])
 if uploaded_file:
+    image = Image.open(uploaded_file)
     st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
     with st.spinner("Identifying the bird..."):
         bird_info = generate_prompt_and_identify(uploaded_file)
