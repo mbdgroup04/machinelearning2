@@ -49,23 +49,24 @@ if st.button("LET'S GO!"):
     st.markdown(f'<meta http-equiv="refresh" content="0; URL={website_url}">', unsafe_allow_html=True)
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
 
-with col1:
+cola,colb,colc=st.columns(3)
+with cola:
     st.image("data/bird1.jpg", width=200)
-with col2:
+with colb:
     st.image("data/bird2.jpg", width=200)
-with col3:
+with colc:
     st.image("data/bird3.jpg", width=200)
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
-with col1:
+with cola:
     st.image("data/bird4.jpg", width=200)
-with col2:
+with colb:
     st.image("data/bird5.jpg", width=200)
-with col3:
+with colc:
     st.image("data/bird6.jpg", width=200)
 st.markdown(f'<p style="font-size:25px; text-align:left; "><br></p>', unsafe_allow_html=True)
-with col1:
+with cola:
     st.image("data/bird7.jpg", width=200)
-with col2:
+with colb:
     st.image("data/bird8.jpg", width=200)
-with col3:
+with colc:
     st.image("data/bird9.jpg", width=200)
