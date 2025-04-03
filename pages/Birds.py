@@ -132,7 +132,7 @@ if user_input:
     with st.chat_message("user"):
         st.markdown(user_input)
     if st.session_state.last_bird_info:
-        user_input = f"Based on this bird information:\n\n{st.session_state.last_bird_info}\n\n{user_input}"
+        user_input = f"Based on the name of this bird:\n\n{st.session_state.last_bird_info},\n\ntell me this:{user_input}"
 
     chat_history = [msg.content for msg in memory.messages]
     response = model.generate_content(user_input)
