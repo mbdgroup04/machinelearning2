@@ -40,8 +40,8 @@ def resolve_origin_to_iata(user_input, gemini_model):
         return iata
     return None
 def get_top_flights(origin: str, destination: str, access_key: str):
-    params = {'access_key': access_key, 'dep_iata': origin, 'arr_iata': destination, 'limit': 10}
-    response = requests.get('http://api.aviationstack.com/v1/flights')
+    params = {'access_key': access_key, 'limit': 10}
+    response = requests.get('http://api.aviationstack.com/v1/flights',params=params)
     if response.status_code != 200:
         return []
     flights = response.json().get('data', [])
