@@ -5,8 +5,6 @@ from langchain.schema import AIMessage, HumanMessage
 from langchain.prompts import PromptTemplate
 from PIL import Image
 import io
-from langchain.chains import ConversationChain
-from langchain_google_genai import ChatGoogleGenerativeAI
 
 st.markdown(
     """
